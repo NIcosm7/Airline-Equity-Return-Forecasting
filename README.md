@@ -86,7 +86,6 @@ $$
 
 This represents the percentage return of an airline stock over the next 30 trading days.
 
-This represents the percentage return of an airline stock over the next 30 trading days.
 
 ## Forecasting Models
 
