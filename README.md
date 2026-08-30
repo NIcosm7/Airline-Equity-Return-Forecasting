@@ -78,6 +78,7 @@ The forecasting target is the forward 30-day return:
 The forecasting target is the forward 30-day return:
 
 $$
+
 R_{t,t+30}
 =
 \frac{P_{t+30}}{P_t}
