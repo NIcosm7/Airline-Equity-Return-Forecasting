@@ -4,9 +4,9 @@ Forecasting 30-day airline stock returns using risk measures, Fama-French factor
 
 ## Project Overview
 
-This project analyzes whether airline-specific operational data can improve short-term equity return forecasts.
+This project analyzes if airline cancellation data can improve equity return forecasts.
 
-The analysis focuses on five major U.S. airlines:
+The analysis focuses on five major airlines:
 
 - AAL — American Airlines
 - DAL — Delta Air Lines
@@ -14,9 +14,9 @@ The analysis focuses on five major U.S. airlines:
 - LUV — Southwest Airlines
 - ALK — Alaska Air Group
 
-The project first builds a baseline forecasting model using historical stock returns, risk measures, and Fama-French factors. A second model then adds airline cancellation rates to test whether operational disruptions provide additional predictive value.
+The project first builds a baseline forecasting model using historical stock returns, risk measures, and Fama-French factors. A second model then adds airline cancellation rates to test if cancellation rates help improve the model.
 
-The target variable is each airline's forward 30-day stock return.
+The models predict each airline's forward 30 day stock return.
 
 ## Data Sources
 
@@ -24,27 +24,25 @@ The project uses:
 
 - Historical stock price data from Yahoo Finance
 - Fama-French three-factor data from Kenneth French's Data Library
-- Airline cancellation data from the U.S. Bureau of Transportation Statistics
+- Airline cancellation data from the U.S. Bureau of Transportation Statistics (BTS)
 
-The cancellation dataset is downloaded from monthly BTS reporting files and processed into monthly cancellation rates for each airline.
-
-Because downloading the full BTS dataset takes a significant amount of time, the processed cancellation data is included in the repository. The BTS download section in the notebook only needs to be run if the user wants to reproduce the processed cancellation dataset.
+Because downloading the full BTS dataset takes a large amount of time, the processed cancellation data is included in the repository.
 
 ## Risk Measures
 
-Three rolling risk measures are calculated for each airline.
+Three risk measures are calculated for each airline.
 
 ### Trailing 30-Day Annualized Volatility
 
-Measures recent overall stock-price variability using the previous 30 trading days and annualizes the result.
+Measures recent overall stock price variability using the previous 30 trading days and annualizes the result.
 
 ### Trailing 30-Day Annualized Downside Volatility
 
-Focuses only on negative daily returns. Positive returns are set equal to zero before calculating downside risk over the previous 30 trading days.
+Looks at only the negative daily returns. Positive returns are set to zero before calculating downside risk over the previous 30 trading days.
 
 ### 252-Day Rolling Beta
 
-Measures each airline stock's sensitivity to movements in the overall market using approximately one year of trading data.
+Measures each airline stock's sensitivity to the overall market using one year of data.
 
 ## Fama-French Three-Factor Analysis
 
@@ -70,9 +68,9 @@ Where:
 - SMB measures the return difference between small-cap and large-cap stocks
 - HML measures the return difference between value and growth stocks
 - Alpha represents returns not explained by the three factors
-- R-squared measures how much variation in airline returns is explained by the model
+- R squared measures how much variation in airline returns is explained by the model
 
-All five airlines had market betas above 1, showing that airline equities were generally more sensitive to broad market movements than the overall market.
+All five airlines had market betas above 1, showing that airline equities were sensitive to market movements.
 
 The Fama-French regressions produced R-squared values of approximately 0.33 to 0.42, meaning the three factors explained roughly 33% to 42% of the variation in daily airline returns.
 
@@ -108,9 +106,8 @@ The baseline model includes:
 
 The second model includes all baseline variables plus:
 
-- Previous month's airline cancellation rate
+- Airline cancellation rate
 
-The cancellation rate is lagged by one month so that the model only uses completed cancellation data that would already have been available at the time of prediction.
 
 ## Model Evaluation
 
@@ -122,7 +119,7 @@ Measures the average absolute difference between predicted and actual 30-day ret
 
 ### Root Mean Squared Error
 
-Measures prediction error while placing greater weight on larger mistakes.
+Measures prediction error.
 
 ### Directional Accuracy
 
@@ -136,7 +133,7 @@ For MAE, the cancellation model slightly improved performance for AAL, DAL, and 
 
 For RMSE, the cancellation model slightly improved performance for AAL and DAL, while performing worse for UAL, LUV, and ALK.
 
-Directional accuracy generally favored the baseline model. The baseline model performed better for AAL, DAL, UAL, and LUV, while ALK was the only airline where cancellation data slightly improved directional accuracy.
+Directional accuracy was higher for the baseline model. The baseline model performed better for AAL, DAL, UAL, and LUV, while ALK was the only airline where cancellation data slightly improved directional accuracy.
 
 DAL produced the strongest directional accuracy at approximately 62% in the baseline model.
 
@@ -144,21 +141,8 @@ LUV produced the lowest overall forecast errors, with a baseline MAE of approxim
 
 ## Conclusion
 
-The results suggest that airline cancellation rates provide limited additional predictive value for 30-day airline stock returns once broader market factors and recent risk measures are already included.
+The results suggest that airline cancellation rates provide limited additional predictive value for 30 day airline stock returns once broader market factors and recent risk measures are already included.
 
-Although cancellations are an economically relevant measure of airline operational disruption, they did not consistently improve out-of-sample forecasting accuracy across the five airlines.
+Although cancellations are a relevant measure of airline operational success, they did not consistently improve forecasting accuracy.
 
-This project demonstrates that an economically intuitive predictor does not necessarily improve forecasting performance and highlights the difficulty of predicting short-term equity returns.
 
-## Repository Structure
-
-```text
-Airline-Equity-Return-Forecasting/
-│
-├── Airline Equity Returns.ipynb
-├── README.md
-│
-├── data/
-│   └── processed/
-│
-└── figures/
