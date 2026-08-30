@@ -49,16 +49,11 @@ Measures each airline stock's sensitivity to the overall market using one year o
 The project uses the Fama-French three-factor model:
 
 $$
-R_{\text{airline}} - R_f
-=
-\alpha
-+
-\beta_M(\text{Mkt-RF})
-+
-\beta_S(\text{SMB})
-+
-\beta_H(\text{HML})
-+
+R_{\text{airline}} - R_f =
+\alpha +
+\beta_M(\text{Mkt-RF}) +
+\beta_S(\text{SMB}) +
+\beta_H(\text{HML}) +
 \epsilon
 $$
 
