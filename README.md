@@ -135,8 +135,8 @@ LUV produced the lowest overall forecast errors, with a baseline MAE of approxim
 
 ## Conclusion
 
-The results suggest that airline cancellation rates provide limited additional predictive value for 30 day airline stock returns once broader market factors and recent risk measures are already included.
+The results show that airline cancellation rates do not help predict 30 day airline stock returns when market factors and risk measures are already included.
 
-Although cancellations are a relevant measure of airline operational success, they did not consistently improve forecasting accuracy.
+Although cancellations are a relevant measure of airline operational success, they do not improve forecasting accuracy.
 
 
