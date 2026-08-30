@@ -73,12 +73,18 @@ The Fama-French regressions produced R-squared values of approximately 0.33 to 0
 
 The forecasting target is the forward 30-day return:
 
+## Forward 30-Day Return
+
+The forecasting target is the forward 30-day return:
+
 $$
 R_{t,t+30}
 =
 \frac{P_{t+30}}{P_t}
 -1
 $$
+
+This represents the percentage return of an airline stock over the next 30 trading days.
 
 This represents the percentage return of an airline stock over the next 30 trading days.
 
